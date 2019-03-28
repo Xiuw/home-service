@@ -1,0 +1,30 @@
+.center{
+	display:flex;
+	justify-content: center;
+
+}
+.form{
+	align-items: center;
+	margin:auto;
+/*	border:solid black 1px;*/
+
+
+}
+
+.margin_btw{
+	margin-bottom:30px;
+}
+
+.inputItem{
+	display:flex;
+	flex-direction:column;
+	margin:5px;
+}
+
+.btn{
+	background-color:rgb(99, 106, 237);
+}
+.btn:hover{
+	background-color:rgb(62, 66, 145);
+
+}

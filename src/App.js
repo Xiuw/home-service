@@ -1,25 +1,51 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Navigation from './components/Navigation/Navigation';
+import SideDrawer from './components/Navigation/SideDrawer';
+import Backdrop from './components/Navigation/Backdrop';
+import Login from './components/Login/Login';
+
+
 import './App.css';
 
 class App extends Component {
+  state={
+    data:[],
+    sideNavOpen:false
+  }
+
+  componentDidMount(){ //fetch data from the database
+    fetch('http://localhost:3000/allpost')
+    .then(response=>response.json())
+    .then(data=> {
+      this.setState({data})
+    })
+  }
+
+  toggleHandler = () =>{
+    this.setState((prevState)=>{
+      return{sideNavOpen:!prevState.sideNavOpen}
+    })
+  }  
+  backdropHandler=()=>{
+    this.setState({sideNavOpen:false})
+  }
+
+
   render() {
+    console.log(this.state.data);
+    let backdrop;
+    if(this.state.sideNavOpen){
+      backdrop = <Backdrop backdropClick={this.backdropHandler} />
+    }
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <Navigation toggleHandler={this.toggleHandler}/>
+      <SideDrawer show={this.state.sideNavOpen}/>
+      {backdrop}
+      <main style={{marginTop: '75px'}}>
+       {/*<Login /> */}
+      
+      </main>
       </div>
     );
   }
