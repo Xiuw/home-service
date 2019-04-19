@@ -1,25 +1,27 @@
 import React, { Component } from "react";
-import { Form, Button} from 'react-bootstrap';
+import { Form, Button} from "react-bootstrap";
+import { Redirect} from 'react-router-dom';
 import "./Login.css";
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: ""
+      email:"",
+      password:"",
+      redirect:false
     };
   }
 
   handleChange = (e) => {
-    const {type,value} = e.target
-    this.setState({[type]:value});
+    const {name,value} = e.target
+    this.setState({[name]:value});
   }
   
   onHandleSubmit =() => {
-    fetch('http://localhost:3000/login',{
-      method:'post',
-      headers:{'Content-Type':'Application/json'},
+    fetch("http://localhost:3000/login",{
+      method:"post",
+      headers:{"Content-Type":'application/json'},
       body:JSON.stringify({
         email:this.state.email,
         password:this.state.password
@@ -27,22 +29,27 @@ export default class Login extends Component {
     })
     .then(response => response.json())
     .then(acc =>{
-      if(acc.id){
-        console.log("yes");
+        if(acc.id){
+            this.props.userProfile(acc);
+            this.props.routeState("login");
+            this.setState({redirect:true})
+        }
       }
-    })
+    )
   }
 
   render() {
-    const{email, password} = this.state;
+    const{email, password,redirect} = this.state;
+    if(redirect){
+      return <Redirect to="/" />;
+    }
     return (
       <main className="form center">
-        <Form>
-            <legend className='margin_btw center'>Login</legend>
-            <Form.Group  className="margin_btw" controlId="formBasicEmail">
+            <legend className='center title'>Login</legend>
+            <Form.Group controlId="formBasicEmail">
               <Form.Label className="center">Email</Form.Label>
               <Form.Control 
-                type="email" 
+                name="email" 
                 size="lg"
                 autoComplete="username-email"
                 placeholder="Enter email" 
@@ -50,13 +57,14 @@ export default class Login extends Component {
                 onChange={this.handleChange}/>
             </Form.Group>
 
-            <Form.Group className="margin_btw" controlId="formBasicPassword">
+            <Form.Group controlId="formBasicPassword">
               <Form.Label className="center">Password</Form.Label>
               <Form.Control 
           
                 value={password} 
-                type="password" 
+                name="password" 
                 size="lg" 
+                type="password"
                 autoComplete="current-password"
                 placeholder="Password" 
                 onChange={this.handleChange}
@@ -68,10 +76,11 @@ export default class Login extends Component {
                 Submit
               </Button>
             </div>
-        </Form>
-            
         </main>
       
     )
   }
 }
+
+
+

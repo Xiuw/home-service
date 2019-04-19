@@ -1,0 +1,26 @@
+
+
+.item{
+
+}
+
+.card{
+	margin:20px;
+	text-align:center;
+}
+
+
+@media (min-width:800px){
+	.card{
+	margin:30px 100px;
+
+	}
+}
+
+@media (min-width:1000px){
+	.card{
+	display:flex;
+	margin:50px 200px;
+
+	}
+}

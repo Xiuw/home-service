@@ -1,8 +1,8 @@
 .toggle-button{
 	display:flex;
 	flex-direction:column;
-	justify-content:space-around;
-	height:24px;
+	justify-content:space-between;
+	height:20px;
 	width:30px;
 	background:transparent;
 	border:none;

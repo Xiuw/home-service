@@ -1,0 +1,22 @@
+.message{
+	margin-top: 300px;
+	font-size:30px;
+}
+.back_link{
+	margin-top:100px;
+	background-color:rgb(99, 106, 237);
+	color:white;
+	justify-content: center;
+}
+.back_link:hover{
+	color:rgb(62, 66, 145);
+}
+.form{
+	margin-left:20px;
+	margin-right:20px;
+}
+
+.submit{
+ margin-top:20px;
+ margin-bottom:20px;
+}

@@ -1,0 +1,18 @@
+.search{
+	padding:20px;
+	display:flex;
+	justify-content:center;
+	position:fixed;
+	width:100%;
+	background:white;
+	z-index:1;
+}
+
+.inputbox{
+	height:40px;
+	text-align:center;
+	font-size:16px;	
+}
+input:focus{
+	outline:none;
+}

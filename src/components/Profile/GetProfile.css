@@ -1,0 +1,19 @@
+.center{
+	display:flex;
+	flex-direction:column;
+	justify-content: center;
+
+}
+.header_title{
+	margin:100px 0 50px 0;
+	text-align:center;
+}
+
+.display_section{
+	text-align:center;
+
+}
+.info_E{
+	color:blue;
+	font-size:20px;
+}

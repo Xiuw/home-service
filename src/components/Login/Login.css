@@ -1,19 +1,18 @@
 .center{
 	display:flex;
-	justify-content: center;
-
+	margin-top:20px;
+	
+}
+.title{
+	text-align:center;
 }
 .form{
+	flex-direction:column;
+	padding-top: 50px;
 	align-items: center;
 	margin:auto;
-/*	border:solid black 1px;*/
-
-
 }
 
-.margin_btw{
-	margin-bottom:30px;
-}
 
 .inputItem{
 	display:flex;
@@ -27,4 +26,18 @@
 .btn:hover{
 	background-color:rgb(62, 66, 145);
 
+}
+
+.message{
+  margin-top: 250px;
+  margin-left: 20px;
+  margin-right:20px;
+  font-size:20px;
+  text-align:center;
+}
+.login{
+	color:rgb(99, 106, 237);
+}
+.login :hover{
+	color:rgb(62, 66, 145);
 }

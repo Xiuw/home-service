@@ -5,9 +5,9 @@
 	position:fixed;
 	top:0;
 	left:0;
-	width:70%;
-	max-wid:400px;
-	width:400px;
+	width:65%;
+	max-width:400px;
+	width:350px;
 	z-index:200;
 	transition: transform 0.5s, ease-out;
 }
@@ -15,6 +15,11 @@
 	transform:translateX(-100%);
 }
 
+.welcome{
+	font-size:20px;
+	margin-left:40px;
+	margin-top:50px;
+}
 
 .side-nav ul{
 	height:100%;
@@ -31,8 +36,10 @@
 	text-decoration:none;
 	font-size:20px;
 }
+
 .side-nav a:hover,
 .side-nav a:active {
+	text-decoration:underline;
 	color:rgb(62, 66, 145);
 }
 @media (min-width:769px){

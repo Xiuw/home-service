@@ -4,8 +4,6 @@ import './Backdrop.css'
 const Backdrop = ({backdropClick})=>{
 	return(
 		<div className="backdrop" onClick={backdropClick}/>
-		
-
 	)
 
 }

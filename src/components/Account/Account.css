@@ -1,0 +1,15 @@
+.profile_link{
+	padding-top:50px;
+}
+.option{
+	display:flex;
+	flex-direction:column;
+	padding-top:20px;
+	font-size:20px;
+	color:blue;
+	text-align:center;
+}
+
+.option:hover{
+	color:rgb(62, 66, 145);
+}
