@@ -17,7 +17,7 @@ class GetProfile extends Component{
 	componentDidMount(){ //fetch data from the database
 	const{id} = this.state;
 	let acc_id= id;
-    fetch(`http://localhost:3000/profile/${acc_id}`)
+    fetch(`https://limitless-brushlands-99611.herokuapp.com/profile/${acc_id}`)
     .then(response=>response.json())
     .then(data=> {
       this.setState(

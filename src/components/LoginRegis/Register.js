@@ -21,7 +21,7 @@ export default class Register extends Component {
   }
   
   onHandleSubmit =() => {
-    fetch('http://localhost:3000/register',{
+    fetch('https://limitless-brushlands-99611.herokuapp.com/register',{
       method:'post',
       headers:{'Content-Type':'Application/json'},
       body:JSON.stringify({

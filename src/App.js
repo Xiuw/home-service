@@ -3,13 +3,15 @@ import {BrowserRouter as Router, Route,Switch,Redirect} from 'react-router-dom';
 import Navigation from './components/Navigation/Navigation';
 import SideDrawer from './components/Navigation/SideDrawer';
 import Backdrop from './components/Navigation/Backdrop';
-import Login from './components/Login/Login';
+import Login from './components/LoginRegis/Login';
 import Post from './components/Post/Post';
-import Register from './components/Login/Register';
+import Register from './components/LoginRegis/Register';
 import Account from './components/Account/Account';
 import GetProfile from './components/Profile/GetProfile';
 import SearchBox from './components/SearchBox/SearchBox';
 import MakePost from './components/MakePost/MakePost';
+import ScrollTop from './components/ScrollTop/ScrollTop';
+import DisplayApost from './components/Post/DisplayApost';
 import './App.css';
 
 const initialState={
@@ -34,12 +36,13 @@ class App extends Component {
   }
 
   componentDidMount(){ //fetch data from the database
-    fetch('http://localhost:3000')
+    fetch('https://limitless-brushlands-99611.herokuapp.com/getall')
     .then(response=>response.json())
     .then(data=> {
       this.setState({data})
     })
   }
+
 
   userProfile = (info)=>{
      this.setState({account:
@@ -87,7 +90,7 @@ class App extends Component {
       const filteredPost = data.filter(post => {
         return post.title.toLowerCase().includes(search.toLowerCase()) || post.city.toLowerCase().includes(search.toLowerCase());
       })
-   
+ 
     return (
       <Router>
       <div className="App">
@@ -96,16 +99,22 @@ class App extends Component {
           {backdrop}
 
         <main style={{marginTop: '70px'}}>
+        <ScrollTop>
           <Switch> 
           <Route exact path="/" render={props=>(
               <React.Fragment>
                 <SearchBox handleSearch={this.handleSearch} search={search} category={category}/>
+
                 <div className="post">
                   <Post postData={filteredPost}/> 
+                
                 </div> 
+              
               </React.Fragment> 
             )} 
           />
+
+
           <Route path="/login" render={props=>(
               <React.Fragment>
                 <Login userProfile={this.userProfile} routeState={this.routeState} />
@@ -119,7 +128,7 @@ class App extends Component {
             )}
           />
           
-            <Route path="/account/" render={props=>(
+            <Route path="/account" render={props=>(
                 <React.Fragment>
                 { isLoggedIn? 
                  <Account/>
@@ -129,7 +138,7 @@ class App extends Component {
               )}
             />
      
-            <Route path="/profile/" render={props=>(
+            <Route path="/profile" render={props=>(
                 <React.Fragment>
                 { isLoggedIn? 
                  <GetProfile acc_id={account.id} />
@@ -149,7 +158,11 @@ class App extends Component {
               </React.Fragment>
            )}
            />
+
+           <Route path="/post/:id" component={DisplayApost}/>
+
           </Switch>
+          </ScrollTop>
          </main>
       </div>
       </Router>

@@ -15,7 +15,7 @@ const SideDrawer = ({closeNav, show, isLoggedIn, routeState, name})=>{
  			  			
 		  					<li><Link className="link" to="/">Home</Link></li>
 		  					
-		  					<li><Link className="link" to="account">{name}</Link></li>
+		  					<li><Link className="link" to="/account">{name}</Link></li>
 		  					
 		  					<li><Link className="link" to="/" onClick={()=>routeState("logout")}>Logout</Link></li>
   						</ul>

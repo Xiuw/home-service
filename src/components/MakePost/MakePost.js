@@ -1,5 +1,6 @@
+ 
 import React, {Component} from "react";
-import { Form,Col,Button} from "react-bootstrap";
+import {Form,Col,Button} from "react-bootstrap";
 import "./MakePost.css"
 
 class MakePost extends Component{
@@ -27,21 +28,31 @@ class MakePost extends Component{
 
 	handleClick =() =>{
 		this.setState({
+			title:"",
+			category:"",
+			description:"",
+			contactEmail:"",
+			contactPhone:"",
+			budget:"",
+			address:"",
+			city:"",
+			state:"",
+			message:"",
 			changeRoute:false
 		})
 	}
 
 	onHandleSubmit =()=>{
 		const{title,category,description,contactEmail, contactPhone,budget,address,city, state}=this.state;
-		fetch("http://localhost:3000/entry",{
+		fetch("https://limitless-brushlands-99611.herokuapp.com/entry",{
 	      	method:"post",
 	        headers:{"Content-Type":'application/json'},
 		         body:JSON.stringify({
 		         	 title:title,
 		         	 category:category,
 		         	 description:description,
-		         	 contactEmail:contactEmail,
-		         	 contactPhone:contactPhone,
+		         	 email:contactEmail,
+		         	 phone:contactPhone,
 		         	 budget:budget,
 		         	 address:address,
 			         city:city,
@@ -51,12 +62,14 @@ class MakePost extends Component{
         })
     	.then(response => response.json())
     	.then(res =>{
-    		if(res){
+    		if(res === this.props.acc_id){
     			this.setState({
     				message:"Your post has been submitted",
     				changeRoute:true
     			})
+    		
     		}
+    			
 		})
 	
 	}
@@ -78,7 +91,7 @@ class MakePost extends Component{
 			</div>
 			:		
 			<div className="center">
-			 	<section className="form">
+			 	<section className="form formMargin">
 			 	<h2 className="title">Make a post</h2>
 			 	   <Form.Group>
 				    <Form.Label>Title</Form.Label>
@@ -157,3 +170,4 @@ class MakePost extends Component{
 }
 
 export default MakePost;
+

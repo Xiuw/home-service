@@ -1,34 +1,40 @@
 import React from 'react';
 import Entry from './Entry';
 import './PostEntry.css'
+import { Spinner} from "react-bootstrap";
 
-const Post = ({postData}) =>{
+const Post = ({postData}) => {
 
     return(
      <div> 
-     {
-      postData.map((post,i) => {
-        return(
-          <Entry
-          key={i}
-          budget={postData[i].budget}
-          date={postData[i].post_date}
-          category={postData[i].category}
-          title={postData[i].title}
-          description={postData[i].description}
-          address={postData[i].address}
-          city={postData[i].city}
-          state={postData[i].state}
-          phone={postData[i].phone}
-          email={postData[i].email}
-          account={postData[i].account_id}
-          />
-        )
-      })
-     }
+           { postData.length === 0 ?
+            <div className="d-flex justify-content-center" style={{marginTop:"120px"}}>
+              <Spinner animation="border" role="status" size="lg">
+                <span className="sr-only loading">Loading...</span>
+              </Spinner>
+             </div>
+        
+            :
+            postData.map((post,i) => {
+              return(
+                <Entry
+                key={i}
+                postId={postData[i].id}
+                date={postData[i].post_date}
+                category={postData[i].category}
+                title={postData[i].title}
+                description={postData[i].description}
+                city={postData[i].city}
+                states={postData[i].state}
+                />
+              )
+            })
+           }
+
      </div>
 
     )
+  
 }
 
 export default Post;

@@ -9,17 +9,20 @@ export default class Login extends Component {
     this.state = {
       email:"",
       password:"",
-      redirect:false
+      redirect:false,
+      error:"",
+      formCheck:""
     };
   }
 
   handleChange = (e) => {
     const {name,value} = e.target
-    this.setState({[name]:value});
+    this.setState({[name]:value, error:"",formCheck:""});
   }
   
   onHandleSubmit =() => {
-    fetch("http://localhost:3000/login",{
+    if(this.state.email !== "" && this.state.password !==""){
+    fetch("https://limitless-brushlands-99611.herokuapp.com/login",{
       method:"post",
       headers:{"Content-Type":'application/json'},
       body:JSON.stringify({
@@ -34,18 +37,28 @@ export default class Login extends Component {
             this.props.routeState("login");
             this.setState({redirect:true})
         }
+       else{
+        this.setState({error:"*Wrong email or password"})
+       } 
       }
+    )
+    }else(
+      this.setState({formCheck:"*Do not leave anything empty"})
     )
   }
 
   render() {
-    const{email, password,redirect} = this.state;
+    console.log(this.state.error);
+    const{email, password,redirect,error, formCheck} = this.state;
     if(redirect){
       return <Redirect to="/" />;
     }
     return (
       <main className="form center">
             <legend className='center title'>Login</legend>
+            <p className=" text-danger">{error}</p>
+            <p className=" text-danger">{formCheck}</p>
+
             <Form.Group controlId="formBasicEmail">
               <Form.Label className="center">Email</Form.Label>
               <Form.Control 
