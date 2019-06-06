@@ -5,3 +5,5 @@ Website:https://homeserviceapp.herokuapp.com/
   - Login page - login to an account
   - Register page - register new account
   - After logged in, user can view their account information and post their request
+
+Back-end application: https://github.com/Xiuw/home-service-api
