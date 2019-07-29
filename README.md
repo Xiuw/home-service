@@ -1,4 +1,4 @@
-Website:https://homeserviceapp.herokuapp.com/
+Website:https://master.dftwfw44dszet.amplifyapp.com/
 ## Home Service
 ### This web application allows user to view and post home-related services
   - Main page - users can view all the posts and perform searches
